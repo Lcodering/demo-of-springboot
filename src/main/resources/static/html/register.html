@@ -4,41 +4,39 @@
 	<div class="form-group">
 		<label for="username" class="col-sm-2 control-label">用户名</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" name="username" required="required" ng-model="username" ng-blur="usernameCheck()" placeholder="请输入用户名">
+			<input type="text" class="form-control" name="Username" required="required" ng-model="username" ng-blur="usernameCheck()" placeholder="请输入用户名">
+			<span class="warning" ng-if="!usernameValid">该用户名已被使用</span>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputPassword" class="col-sm-2 control-label">密码</label>
 		<div class="col-sm-4">
-			<input type="password" class="form-control" name="password" required="required" ng-model="password" placeholder="请输入密码">
+			<input type="password" class="form-control" name="Password" required="required" ng-model="password" placeholder="请输入密码">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputPassword" class="col-sm-2 control-label">密码</label>
+		<label for="inputPassword" class="col-sm-2 control-label">确认密码</label>
 		<div class="col-sm-4">
-			<input type="password" class="form-control" name="rePassword" required="required" ng-model="rePassword" placeholder="请再次输入密码">
+			<input type="password" class="form-control" name="RePassword" required="required" ng-model="rePassword" placeholder="请再次输入密码">
 			<span class="warning" ng-show="password!=rePassword">两次输入不一致</span>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Email</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" name="email" required="required" ng-model="email" placeholder="请输入邮箱">
-				<span class="warning" ng-show="angularForm.email.$error.required">*</span>
-	            <span class="warning" ng-show="angularForm.email.$error.email">邮箱格式不正确</span>
+			<input type="text" class="form-control" name="Email" required="required" ng-model="email" ng-blur="emailCheck()" placeholder="请输入邮箱">
+	            <span class="warning" ng-if="!emailValid">邮箱格式不正确</span>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="phone" class="col-sm-2 control-label">手机号</label>
 		<div class="col-sm-4"> 
-			<input type="number" class="form-control" name="phone" required="required" ng-model="phone" placeholder="请输入手机号码" ng-pattern="/^1[3|4|5|7|8]\d{9}$/">
-				<span class="warning" ng-show="angularForm.phone.$error.required">*</span>
-	            <span class="warning" ng-show="angularForm.phone.$error.number">只能输入数字</span>
-	            <span class="warning" ng-show="angularForm.phone.$error.pattern">手机格式不正确</span>
+			<input type="number" class="form-control" name="Phone" required="required" ng-model="phone" ng-blur="phoneCheck()" placeholder="请输入手机号码" ng-pattern="/^1[3|4|5|7|8]\d{9}$/">
+	            <span class="warning" ng-if="!phoneValid">请输入有效的手机号</span>
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="btn btn-success" type="reset" value="重置">
 			<input class="btn btn-success" type="submit" ng-click="newUser()" value="注册">
 		</div>

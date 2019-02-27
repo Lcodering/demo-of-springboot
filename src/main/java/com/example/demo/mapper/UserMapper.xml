@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+<!-- 打开二级缓存 -->
+<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+
+<!-- 根据用户id查询一个用户信息 
+select：用于查询，主要配置sql语句、输入参数类型、输出结果类型
+最终该 select 标签 中所配置的内容会封装到MappedStatement对象，可以将该 select称为是一个Statement
+id：唯 一标识 namespace下的一个sql语句，将id称为Statement的id
+
+parameterType：指定输入参数的类型（简单类型、自定义pojo）
+#{}：表示一个占位符号，占位符号可以防止sql注入
+#{value}：value表示接收输入参数的值，如果接收的输入参数是简单类型，#{}里边可以写value或其它的名称
+resultType：将sql查询结果集映射成java对象
+将多个列的值映射到一个对象中，需要定义的pojo，resultType映射规则是sql查询列名和pojo的属性名必须一致方可完成映射
+resultType 指定单条记录所映射的java对象
+
+-->
+<select id="checkUserByName" parameterType="string" resultType="user">
+	SELECT * FROM USER WHERE username = #{username}
+</select>
+
+
+
+</mapper>
