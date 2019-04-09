@@ -8,5 +8,8 @@ import com.example.demo.bean.User;
 public interface UserMapper {
 	
 	public User checkUserByName(String username) throws Exception;
+	
+	public void addUser(User user) throws Exception;
+	
 
 }

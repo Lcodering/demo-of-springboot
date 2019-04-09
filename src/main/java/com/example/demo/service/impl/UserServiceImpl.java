@@ -21,4 +21,12 @@ public class UserServiceImpl implements UserService {
 		return userMapper.checkUserByName(username);
 	}
 
+
+
+	@Override
+	public void addUser(User user) throws Exception {
+		userMapper.addUser(user);
+		
+	}
+
 }

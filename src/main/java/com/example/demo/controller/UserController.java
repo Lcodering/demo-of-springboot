@@ -51,7 +51,6 @@ public class UserController {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 		return null;
@@ -60,8 +59,20 @@ public class UserController {
 	@RequestMapping(path="/register" ,method=RequestMethod.POST)
 	public Object registery(@RequestBody User user) {
 		
+		logger.info("add user function");
+		Message<String> msg = null;
 		
-		return null;
+		try {
+			userServiceImpl.addUser(user);
+			
+			return new Message<String>("success", 200, null);
+		} catch (Exception e) {
+			
+			logger.error(e.getMessage());
+			return new Message<String>("fail", 200, null);
+			
+		}
+		
 	}
 	
 	

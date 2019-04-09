@@ -10,17 +10,12 @@ app.controller("registerCtrl",function($rootScope,$scope,$http){
 	
 	console.log("This is indexPage--->"+$rootScope.isLandingPage);
 	
-//	var postCfg = {
-//		headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
-//		transformRequest: function (data) {
-//                  return $.param(data);
-//              }
-//	}
-	var Username = $scope.username;
+	
 	
 	//查看用户名是否存在
 	$scope.usernameCheck = function(){
-		
+		var Username = $scope.username;
+		alert(Username)
 		if(""!=Username){
 			$http.post("/nameCheck",Username).then(function(response){
 				if(response.data.msg=="success"){
@@ -61,8 +56,10 @@ app.controller("registerCtrl",function($rootScope,$scope,$http){
 		var password = $scope.password;
 		var email = $scope.email;
 		var phone = $scope.phone;
+		var username = $scope.username;
 		
-		$http.post("/register",{"username":Username,"password":password,"email":email,"phoneNumber":phone}).then(function(repsonse){
+		
+		$http.post("/register",{"username":username,"password":password,"email":email,"phoneNumber":phone}).then(function(repsonse){
 			if(response.data.msg == 'success'){
 				console.log("register successful");
 			}else{

@@ -26,6 +26,8 @@ resultType 指定单条记录所映射的java对象
 	SELECT * FROM USER WHERE username = #{username}
 </select>
 
-
+<insert id="addUser" parameterType="User">
+	insert into User (username,password,email,phoneNumber) values (#{username},#{password},#{email},#{phoneNumber})
+</insert>
 
 </mapper>
